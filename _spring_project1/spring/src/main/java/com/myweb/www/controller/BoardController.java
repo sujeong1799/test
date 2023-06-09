@@ -51,8 +51,8 @@ public class BoardController {
 	// insert update delete 후 redirect 처리 함
 	// RedirectAttributes : 데이터 새로고침
 
-	// list는 보내줄거 없으니까 PostMapping 안씀 (페이징할때 쓸거래)
-	@GetMapping("/list") // 왔던 형태에서 다시 돌아간다면 String말고 void 써도 됨 
+	// list는 보내줄거 없으니까 PostMapping 안씀
+	@GetMapping("/list") 
 	public String listPost(Model m, PagingVO pvo) {
 		log.info(">>> pagevo : " + pvo);
 		// RedirectAttributes 객체사용 : 데이터의 새로고침
@@ -64,18 +64,8 @@ public class BoardController {
 		return "/board/list";
 	}
 	
-	/*
-	 * // 검... 색...?
-	 * 
-	 * @GetMapping("/page") public String pagePost(Model m, PagingVO pvo) {
-	 * log.info(">>> pgvo >" + pvo.getTypeToArray()); int totCount = bsv.total(pvo);
-	 * List<BoardVO> list = bsv.pageList(pvo); PagingHandler ph = new
-	 * PagingHandler(pvo, totCount); m.addAttribute("ph", ph);
-	 * m.addAttribute("list", list); return "/board/list"; }
-	 */
-
 	
-	@GetMapping("/detail")
+	@GetMapping("/detail") // 왔던 형태에서 다시 돌아간다면 String말고 void 써도 됨 
 	   public void detail(Model m, @RequestParam("bno")int bno) {
 	      log.info(">>> bno >" + bno);
 	      BoardVO bvo = bsv.detail(bno);

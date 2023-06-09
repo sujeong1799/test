@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import com.myweb.www.domain.BoardVO;
 import com.myweb.www.domain.PagingVO;
 import com.myweb.www.repository.BoardDAO;
-import com.myweb.www.repository.UserDAO;
 
 import lombok.extern.slf4j.Slf4j;
 

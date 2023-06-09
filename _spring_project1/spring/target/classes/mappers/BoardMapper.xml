@@ -45,15 +45,11 @@
 		select count(bno) from
 		board where isDel = "N" <include refid="search"></include>
 	</select>
-<!-- 	<select id="total" resultType="int">
-		select count(bno) from board where bno > 0
-		<include refid="search"></include>
-	</select> -->
 	<sql id="search">
 		<if test="type != null">
 			<trim prefix="and (" suffix=")" prefixOverrides="OR">
 				<foreach collection="typeToArray" item="type">
-					<trim prefix="OR">
+					<trim prefix="OR"><!-- or은 여러개 검색할때 쓴다. .? -->
 						<choose>
 							<when test="type == 't'.toString()">
 								title like concat('%', #{keyword}, '%')
@@ -73,15 +69,4 @@
 			</trim>
 		</if>
 	</sql>
-	<!-- <select id="pageListBoard" resultType="com.myweb.www.domain.BoardVO">
-		select a.bno, title, writer, reg_date, read_count from (
-		select bno
-		from board where bno > 0
-		<include refid="search"></include>
-		order by bno desc
-		limit #{pageStart}, #{qty}
-		) a left join board b
-		on
-		a.bno = b.bno
-	</select> -->
 </mapper>

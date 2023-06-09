@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.myweb</groupId>
 	<artifactId>www</artifactId>
@@ -156,11 +156,11 @@
 			<version>${org.springframework-version}</version>
 		</dependency>
 
-	<dependency>
-		<groupId>org.springframework</groupId>
-		<artifactId>spring-test</artifactId>
-		<version>${org.springframework-version}</version>
-	</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
 
 		<!-- HikariCP -->
 		<dependency>
@@ -168,7 +168,7 @@
 			<artifactId>HikariCP</artifactId>
 			<version>5.0.1</version>
 		</dependency>
-		
+
 		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
@@ -189,6 +189,23 @@
 			<artifactId>spring-security-config</artifactId>
 			<version>5.5.3</version>
 		</dependency>
+
+		<!-- 댓글 관련 설정 JSON -->
+		<!-- jackson-databind, jackson-dataformat-xml 2.13.0 -->
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.13.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-xml -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.dataformat</groupId>
+			<artifactId>jackson-dataformat-xml</artifactId>
+			<version>2.13.0</version>
+		</dependency>
+		
 
 	</dependencies>
 	<build>

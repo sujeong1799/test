@@ -50,6 +50,40 @@
 		</c:if>
 	</div>
 
+<br>
+	<!-- 댓글 라인 -->
+	<div align="center">
+
+
+		<!-- 댓글 작성 라인 -->
+		<div>
+			<span id="cmtWriter"> ${bvo.writer }</span> <input type="text"
+				id="cmtText" placeholder="댓글을 적어주세요.">
+			<button type="button" id="cmtPostBtn">등록</button>
+		</div>
+
+
+		<!-- 댓글 표시 라인 -->
+		<div>
+			<!-- li 하나가 하나의 댓글 객체 -->
+			<ul id="cmtListArea" style="list-style: none;">
+				<li style="list-style: none;">
+					<div>
+						<div>Writer</div>
+						Content for Comment
+					</div> <span>mod_date</span>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+
+<script type="text/javascript">
+const bnoVal = '<c:out value="${bvo.bno}" />';
+console.log("bno > "+bnoVal);
+</script>
+<script type="text/javascript" src="/resources/js/boardComment.js"></script>
+
 
 </body>
 </html>

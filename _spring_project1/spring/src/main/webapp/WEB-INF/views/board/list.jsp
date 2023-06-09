@@ -27,13 +27,13 @@
 				<option value="w" ${type eq 'w' ? 'selected' :'' }>작성자</option>
 				<option value="n" ${type eq 'n' ? 'selected' :'' }>글번호</option>
 				<option value="c" ${type eq 'c' ? 'selected' :'' }>내용</option>
+				<option value="tw" ${type eq 'c' ? 'selected' :'' }>제목&내용</option>
 			</select>
 			<input type="text" name="keyword" placeholder="search">
 			<input type="hidden" name="pageNo" value="${ph.pgvo.pageNo }">
 			<input type="hidden" name="qty" value="${ph.pgvo.qty }">
 			<button type="submit">Search</button>
-<%-- 			<span>${ph.totalCount }</span>
- --%>		</div>
+		</div>
 	</form>
 
 	<div style="width: 700px; margin: 0px auto;">
