@@ -1,0 +1,15 @@
+
+6월 02, 2023 14:37:12.644 NEW SESSION
+6월 02, 2023 14:37:12.644 [12564:10344:0602/143712.643:ERROR:mcs_client.cc(750)] Received close command, resetting connection.
+
+6월 07, 2023 09:34:36.692 NEW SESSION
+6월 07, 2023 09:34:36.692 [10616:8796:0607/093436.691:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
+6월 07, 2023 11:39:52.435 [3960:1740:0607/113952.435:ERROR:interface_endpoint_client.cc(697)] Message 1 rejected by interface blink.mojom.WidgetHost
+
+6월 09, 2023 09:46:12.658 NEW SESSION
+6월 09, 2023 09:46:12.658 [6044:6212:0609/094612.657:ERROR:interface_endpoint_client.cc(697)] Message 1 rejected by interface blink.mojom.WidgetHost
+6월 09, 2023 09:46:12.658 [6044:6212:0609/094612.657:ERROR:interface_endpoint_client.cc(697)] Message 1 rejected by interface blink.mojom.WidgetHost
+6월 09, 2023 09:50:29.399 [992:10340:0609/095029.399:ERROR:interface_endpoint_client.cc(697)] Message 1 rejected by interface blink.mojom.WidgetHost
+6월 09, 2023 10:20:53.210 [9100:10128:0609/102053.209:ERROR:interface_endpoint_client.cc(697)] Message 1 rejected by interface blink.mojom.WidgetHost
+6월 09, 2023 10:20:53.210 [9100:10128:0609/102053.209:ERROR:interface_endpoint_client.cc(697)] Message 1 rejected by interface blink.mojom.WidgetHost
+6월 09, 2023 10:27:33.08 [6284:9128:0609/102733.007:ERROR:interface_endpoint_client.cc(697)] Message 1 rejected by interface blink.mojom.WidgetHost

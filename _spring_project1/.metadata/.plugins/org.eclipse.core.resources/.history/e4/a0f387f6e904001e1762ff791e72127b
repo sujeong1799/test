@@ -1,0 +1,28 @@
+package com.myweb.www.service;
+
+import javax.inject.Inject;
+
+import org.springframework.stereotype.Service;
+
+import com.myweb.www.domain.BoardVO;
+import com.myweb.www.repository.BoardDAO;
+import com.myweb.www.repository.UserDAO;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@Service
+public class BoardServiceImpl implements BoardService {
+
+	@Inject
+	private BoardDAO bdao;
+
+	@Override
+	public int register(BoardVO bvo) {
+		log.info(">>> register service 진입");
+		int isOk = bdao.registerBoard(bvo);
+		return isOk;
+	}
+
+	
+}
