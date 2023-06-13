@@ -67,11 +67,10 @@
 		<div>
 			<!-- li 하나가 하나의 댓글 객체 -->
 			<ul id="cmtListArea" style="list-style: none;">
-				<li style="list-style: none;">
+				<li>
 					<div>
-						<div>Writer</div>
-						Content for Comment
-					</div> <span>mod_date</span>
+						<div >Writer</div> Content for Comment
+					</div><span>mod_date</span>
 				</li>
 			</ul>
 		</div>
@@ -83,7 +82,9 @@ const bnoVal = '<c:out value="${bvo.bno}" />';
 console.log("bno > "+bnoVal);
 </script>
 <script type="text/javascript" src="/resources/js/boardComment.js"></script>
-
+<script type="text/javascript">
+getCommentList(bnoVal);
+</script>
 
 </body>
 </html>

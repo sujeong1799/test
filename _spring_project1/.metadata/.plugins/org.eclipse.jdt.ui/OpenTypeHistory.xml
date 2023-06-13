@@ -1,6 +1,2 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<typeInfoHistroy>
-    <typeInfo handle="=spring/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.myweb.www.service{UserService.java[UserService" modifiers="513" timestamp="1686108883516"/>
-    <typeInfo handle="=spring/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.myweb.www.service{BoardService.java[BoardService" modifiers="513" timestamp="1686272281923"/>
-    <typeInfo handle="=spring/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.myweb.www.service{CommentService.java[CommentService" modifiers="513" timestamp="1686284371996"/>
-</typeInfoHistroy>
+<typeInfoHistroy/>
