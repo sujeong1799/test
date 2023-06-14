@@ -8,16 +8,22 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.myweb.www.Handler.FileHandler;
 import com.myweb.www.Handler.PagingHandler;
+import com.myweb.www.domain.BoardDTO;
 import com.myweb.www.domain.BoardVO;
+import com.myweb.www.domain.FileVO;
 import com.myweb.www.domain.PagingVO;
 import com.myweb.www.domain.UserVO;
+import com.myweb.www.repository.UserDAO;
 import com.myweb.www.service.BoardService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -30,6 +36,12 @@ public class BoardController {
 
 	@Inject
 	private BoardService bsv;
+	
+	@Inject
+	private UserDAO udao;
+	
+	@Inject
+	private FileHandler fhd;
 
 	@GetMapping("/register")
 	public String registerGet() {
@@ -37,16 +49,33 @@ public class BoardController {
 	}
 
 	@PostMapping("/register")
-	public String registerPost(BoardVO bvo, RedirectAttributes rAttr) {
-		// 모델객체 보내서 뭐 할거면 쓰셈
-		log.info(">>> bvo >" + bvo.toString()); // 잘나오는지 확인먼저
-		int isOk = bsv.register(bvo);
-		log.info(">> board register >> " + (isOk > 0 ? "OK" : "FAIL"));
-
-		// 가져가야하는 객체가 있다면
-		rAttr.addAttribute("isOk", isOk);// 이케 가져가셈 얘는 값이 안사라짐 flush붙은거는 1회용임
-		return "redirect:/board/list";
-	}
+	   public String registerPost(BoardVO bvo, RedirectAttributes rAttr,
+	         @RequestParam(name="files", required=false)MultipartFile[] files) {
+	      // 모델객체 보내서 뭐 할거면 쓰셈
+	      log.info(">>> bvo >" + bvo.toString()); // 잘나오는지 확인먼저
+	      //log.info(">>> file" + files.toString());
+	      List<FileVO> fList = null;
+	      
+	      //file처리 handler로 처리
+	      if(files[0].getSize()>0) { //데이터가 있다 라는 것을 의미
+	         //파일 배열을 경로설정, fvo set 다 해서 리스트로 리턴
+	         fList = fhd.uploadFiles(files);
+	      }else{
+	         log.info("file null");
+	      }
+	      
+	      //파일과 보드 처리를 별도로 할것인지 같이 묶어 처리 (묶어처리 => 일반적)
+	      
+	      BoardDTO bdto = new BoardDTO(bvo,fList);
+	      int isOk = bsv.register(bdto);
+	      
+	      
+	      //int isOk = bsv.register(bvo);
+	      log.info(">> board register >> " + (isOk > 0 ? "OK" : "FAIL"));
+	      // 가져가야하는 객체가 있다면
+	      rAttr.addAttribute("isOk", isOk);// 이케 가져가셈 얘는 값이 안사라짐 flush붙은거는 1회용임
+	      return "redirect:/board/list";
+	   }
 
 	// insert update delete 후 redirect 처리 함
 	// RedirectAttributes : 데이터 새로고침
@@ -69,15 +98,17 @@ public class BoardController {
 	   public void detail(Model m, @RequestParam("bno")int bno) {
 	      log.info(">>> bno >" + bno);
 	      BoardVO bvo = bsv.detail(bno);
+	      BoardDTO bdto = bsv.detailFile(bno);
 	      int isOk = bsv.count(bno);
 	      log.info(">>> count up > " + (isOk > 0 ? "success" : "Fail"));
-	      m.addAttribute("bvo", bvo);
+	      m.addAttribute("boardDTO", bno);
 	   }
 	
 	// String으로 하면 return 값을 써야하잔아..
 	// detail을 가져와야 하는 케이스 : detail, modify 둘다 detail을 가져와야하니께 두개 다 써줘
 	@GetMapping("/modify") // 다시 board detail값으로 돌아간다능.. 뭐 .. 그런..
 	// 물음표 달고오능거는 @RequestParam으로 받으면 됨
+	// 값을 받을때 RequestParam으로 받아도 되고 int bno로 받아도 됨
 	public void modify(Model m, @RequestParam("bno") int bno) {
 		log.info(">>> bno >" + bno);
 		BoardVO bvo = bsv.modify(bno);

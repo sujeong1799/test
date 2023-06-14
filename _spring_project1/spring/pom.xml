@@ -228,6 +228,7 @@
 			<version>0.4.14</version>
 		</dependency>
 
+
 		<!-- tika 설정 -->
 		<!-- tika core 2.4.1 -->
 		<!-- https://mvnrepository.com/artifact/org.apache.tika/tika-core -->
@@ -244,6 +245,7 @@
 			<version>2.4.1</version>
 			<type>pom</type>
 		</dependency>
+
 
 
 

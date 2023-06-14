@@ -2,12 +2,13 @@ package com.myweb.www.service;
 
 import java.util.List;
 
+import com.myweb.www.domain.BoardDTO;
 import com.myweb.www.domain.BoardVO;
 import com.myweb.www.domain.PagingVO;
 
 public interface BoardService {
 
-	int register(BoardVO bvo);
+	int insert(BoardVO bvo);
 
 	List<BoardVO> list();
 
@@ -28,5 +29,9 @@ public interface BoardService {
 	int total(PagingVO pvo);
 
 	List<BoardVO> pageList(PagingVO pvo);
+
+	int register(BoardDTO bdto);
+
+	BoardDTO detailFile(int bno);
 
 }

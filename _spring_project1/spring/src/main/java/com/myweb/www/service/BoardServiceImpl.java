@@ -6,9 +6,12 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.myweb.www.domain.BoardDTO;
 import com.myweb.www.domain.BoardVO;
+import com.myweb.www.domain.FileVO;
 import com.myweb.www.domain.PagingVO;
 import com.myweb.www.repository.BoardDAO;
+import com.myweb.www.repository.FileDAO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -18,11 +21,13 @@ public class BoardServiceImpl implements BoardService {
 
 	@Inject
 	private BoardDAO bdao;
+	@Inject
+	private FileDAO fdao;
 
 	@Override
-	public int register(BoardVO bvo) {
+	public int insert(BoardVO bvo) {
 		log.info(">>> register service 진입");
-		int isOk = bdao.registerBoard(bvo);
+		int isOk = bdao.insert(bvo);
 		return isOk;
 	}
 
@@ -84,6 +89,39 @@ public class BoardServiceImpl implements BoardService {
 	public List<BoardVO> pageList(PagingVO pvo) {
 		log.info(">>> board pageList service 진입");
 		return bdao.pageListBoard(pvo);
+	}
+
+	@Override
+	public int register(BoardDTO bdto) {
+		log.info("bvo+fList register service 진입");
+		// 기존 게시글에 대한 내용 DB 저장 내용을 다시 호출
+		int isOk = bdao.insert(bdto.getBvo());
+		if(bdto.getFList() == null ) { //  null이면 파일이 없다를 의미
+			isOk*=1; // 값이 없기때문에 그냥 성공한걸로 친대
+		}else {
+			// bvo가 db에 들어갔고, 파일 개수가 있다면
+			if(isOk > 0 && bdto.getFList().size() >0 ) {
+				//register는 등록시 bno가 결정되어있지 않음
+//				int bno = bdto.getBvo().getBno(); // 업데이트면 이렇게해도 되는건데 register니까 bno가 없겠죠?
+				int bno = bdao.selectBno();// 방금 저장된 bvo의 bno 리턴받기
+				//fList의 모든 file의 bno를 방금 받은 bno로 set
+				for(FileVO fvo : bdto.getFList()) {
+					fvo.setBno(bno);
+					log.info(">>> registerBoard File : "+fvo.toString());
+					isOk *= fdao.insertFile(fvo);
+				}
+			}
+		}
+		return isOk;
+	}
+
+	@Override
+	public BoardDTO detailFile(int bno) {
+		log.info(">>> detail File service 진입");
+		BoardDTO bdto = new BoardDTO();
+		bdto.setBvo(bdao.detailBoard(bno)); // bvo호출
+		bdto.setFList(fdao.getFileList(bno)); //fList호출
+		return null;
 	}
 
 
