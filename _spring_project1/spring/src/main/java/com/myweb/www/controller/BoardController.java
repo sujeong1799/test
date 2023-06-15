@@ -6,10 +6,15 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -54,19 +59,19 @@ public class BoardController {
 	      // 모델객체 보내서 뭐 할거면 쓰셈
 	      log.info(">>> bvo >" + bvo.toString()); // 잘나오는지 확인먼저
 	      //log.info(">>> file" + files.toString());
-	      List<FileVO> fList = null;
+	      List<FileVO> flist = null;
 	      
 	      //file처리 handler로 처리
 	      if(files[0].getSize()>0) { //데이터가 있다 라는 것을 의미
 	         //파일 배열을 경로설정, fvo set 다 해서 리스트로 리턴
-	         fList = fhd.uploadFiles(files);
+	         flist = fhd.uploadFiles(files);
 	      }else{
 	         log.info("file null");
 	      }
 	      
 	      //파일과 보드 처리를 별도로 할것인지 같이 묶어 처리 (묶어처리 => 일반적)
 	      
-	      BoardDTO bdto = new BoardDTO(bvo,fList);
+	      BoardDTO bdto = new BoardDTO(bvo,flist);
 	      int isOk = bsv.register(bdto);
 	      
 	      
@@ -97,11 +102,12 @@ public class BoardController {
 	@GetMapping("/detail") // 왔던 형태에서 다시 돌아간다면 String말고 void 써도 됨 
 	   public void detail(Model m, @RequestParam("bno")int bno) {
 	      log.info(">>> bno >" + bno);
-	      BoardVO bvo = bsv.detail(bno);
 	      BoardDTO bdto = bsv.detailFile(bno);
+	      log.info("bdto>>"+bdto.getBvo());
+	      log.info("bdto>>"+bdto.getFlist());
 	      int isOk = bsv.count(bno);
 	      log.info(">>> count up > " + (isOk > 0 ? "success" : "Fail"));
-	      m.addAttribute("boardDTO", bno);
+	      m.addAttribute("boardDTO", bdto);
 	   }
 	
 	// String으로 하면 return 값을 써야하잔아..
@@ -111,15 +117,25 @@ public class BoardController {
 	// 값을 받을때 RequestParam으로 받아도 되고 int bno로 받아도 됨
 	public void modify(Model m, @RequestParam("bno") int bno) {
 		log.info(">>> bno >" + bno);
-		BoardVO bvo = bsv.modify(bno);
-		m.addAttribute("bvo", bvo);
+//		BoardVO bvo = bsv.modify(bno);
+		BoardDTO bdto = bsv.modifyFile(bno); // 추가
+		
+//		m.addAttribute("bvo", bvo);
+		m.addAttribute("boardDTO", bdto);
 	}
 		
 
 	@PostMapping("/modify")
-	public String edit(Model m, BoardVO bvo, RedirectAttributes rAttr) {
+	public String edit(Model m, BoardVO bvo, RedirectAttributes rAttr,
+	         @RequestParam(name="files", required=false)MultipartFile[] files) {
 		log.info(">>> bvo >" + bvo);
-		int isOk = bsv.edit(bvo);
+//		int isOk = bsv.edit(bvo);
+		List<FileVO> flist = null;
+		if(files[0].getSize()>0) {
+			flist = fhd.uploadFiles(files);
+		}
+		BoardDTO bdto = new BoardDTO(bvo, flist);
+		int isOk = bsv.editFile(bdto);
 		m.addAttribute("bvo", bvo);
 		return "redirect:/board/list";
 	}
@@ -139,6 +155,14 @@ public class BoardController {
 		log.info(">>> 글 삭제 >" + (isOk > 0 ? "성공" : "실패"));
 		return "redirect:/board/list";
 	}
+	
+	@DeleteMapping(value="/file/{uuid}", produces = {MediaType.TEXT_PLAIN_VALUE})
+	public ResponseEntity<String> removeFile(@PathVariable("uuid")String uuid){
+		log.info("uuid : "+uuid);
+		return bsv.removeFile(uuid) > 0 ? new ResponseEntity<String>("1", HttpStatus.OK) :
+			new ResponseEntity<String>("0", HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+	
 	
 	
 	

@@ -1,12 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" perfix="fn" %>
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
-	crossorigin="anonymous">
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,8 +12,8 @@
 </head>
 <body>
 	<h1>Board Detail Page</h1>
-	<c:set var="board" value=${BoardDTO.bvo }></c:set>
 	<div style="width: 700px;">
+ 	<c:set var="bvo" value="${boardDTO.bvo }"></c:set>
 		<table class="table table-bordered">
 			<tr>
 				<th>글 번호</th>
@@ -44,15 +41,15 @@
 			</tr>
 		</table>
 		<!-- file 표시 영역 -->
-		<c:set var="fList" value=${BoardDTO.fList }></c:set>
+ 		<c:set var="flist" value="${boardDTO.flist }"></c:set>
 		<div>
 			<ul>
-				<c:forEach items="${fList }" var="fvo">
+				<c:forEach items="${flist }" var="fvo">
 					<li><c:choose>
 							<c:when test="${fvo.file_type  > 0}">
 								<div>
 									<img alt="없음"
-										src="/upload/${fn: replace(fvo.save_dir, '\\','/') } / ${fvo.uuid }_th_${fvo.file_name}">
+										src="/upload/${fn: replace(fvo.save_dir, '\\','/')}/${fvo.uuid }_th_${fvo.file_name}">
 								</div>
 							</c:when>
 							<c:otherwise>
@@ -76,7 +73,6 @@
 			<a href="/board/delete?bno=${bvo.bno }"><button>삭제</button></a>
 		</c:if>
 	</div>
-
 	<br>
 	<!-- 댓글 라인 -->
 	<div align="center">
@@ -107,7 +103,7 @@
 
 
 	<script type="text/javascript">
-		const bnoVal = '<c:out value="${bvo.bno}" />';
+		const bnoVal = '<c:out value="${boardDTO.bvo.bno}" />';
 		console.log("bno > " + bnoVal);
 	</script>
 	<script type="text/javascript" src="/resources/js/boardComment.js"></script>

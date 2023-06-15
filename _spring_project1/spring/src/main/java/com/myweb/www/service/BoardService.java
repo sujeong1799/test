@@ -34,4 +34,10 @@ public interface BoardService {
 
 	BoardDTO detailFile(int bno);
 
+	BoardDTO modifyFile(int bno);
+
+	int removeFile(String uuid);
+
+	int editFile(BoardDTO bdto);
+
 }
