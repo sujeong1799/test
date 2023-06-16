@@ -1,0 +1,48 @@
+package com.myweb.www.controller;
+
+
+import javax.inject.Inject;
+
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.myweb.www.domain.UserVO;
+import com.myweb.www.service.UserService;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@RequestMapping("/member/*")
+@Controller
+public class UserController {
+	
+	@Inject
+	private UserService usv;
+	BCryptPasswordEncoder passwordencoder;
+	int isOk;
+	
+	@GetMapping("/signup")
+	public String index(Model m) {
+		log.info("index 접근 완료");
+		return "/user/signup";
+	}
+	
+	@PostMapping("/signup")
+	public String signupPost(Model m, UserVO uvo) {
+		log.info("JOIN 접근 완료");
+		log.info(uvo.toString());
+		isOk = usv.signUp(uvo);
+		if(isOk > 0) {
+			m.addAttribute("msg_signup", 1);
+		}else {
+			m.addAttribute("msg_signup", 0);
+		}
+		return "home";
+	}
+	
+	
+}

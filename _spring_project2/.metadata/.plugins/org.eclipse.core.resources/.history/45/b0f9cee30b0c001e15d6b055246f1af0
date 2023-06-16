@@ -1,0 +1,13 @@
+package com.myweb.www.controller;
+
+import org.mybatis.logging.LoggerFactory;
+import org.slf4j.Logger;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@RequestMapping("/member/*")
+@Controller
+public class UserController {
+	
+	private static final Logger log = LoggerFactory.getLogger(UserController.class);
+}

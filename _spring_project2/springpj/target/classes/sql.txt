@@ -1,0 +1,12 @@
+-- root 立加
+mysql -uroot -pezen
+
+-- database 积己
+create database springpj;
+
+-- 蜡历积己 备巩
+create user 'springpjuser'@'localhost' identified by 'mysql';
+
+-- 鼻茄何咯 备巩
+grant all privileges on springpj.* to 'springpjuser'@'localhost' with grant option;
+flush privileges;

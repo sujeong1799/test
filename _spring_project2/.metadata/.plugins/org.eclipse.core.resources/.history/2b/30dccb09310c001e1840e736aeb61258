@@ -1,0 +1,51 @@
+package com.myweb.www.service;
+
+import javax.inject.Inject;
+
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import com.myweb.www.domain.UserVO;
+import com.myweb.www.repository.UserDAO;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@Service
+public class UserServiceImpl implements UserService {
+	
+	@Inject
+	private UserDAO udao;
+	BCryptPasswordEncoder passwordencoder;
+	
+	@Override
+	public int signUp(UserVO uvo) {
+		log.info(">>> signUp service 진입");
+		UserVO tempUser = udao.getUser(uvo.getId());
+		if (tempUser != null) {
+			return 0;
+		}
+
+		// 아이디가 중복되지 않았다면 회원가입을 진행
+		if (uvo.getId() == null || uvo.getId().length() == 0) {
+			return 0;
+		}
+
+		// password가 null이거나 값이 없으면 가입불가
+		if (uvo.getPw() == null || uvo.getPw().length() == 0) {
+			return 0;
+		}
+
+		// 회원가입 진행
+		String pw = uvo.getPw();
+		String encodePw = passwordencoder.encode(pw);
+		uvo.setPw(encodePw);
+		
+		// 회원가입 => insert
+		int isOk = udao.insertUser(uvo);
+		return isOk;
+	}
+	
+
+}

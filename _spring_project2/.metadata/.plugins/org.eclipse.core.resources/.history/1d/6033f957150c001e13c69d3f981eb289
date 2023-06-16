@@ -1,0 +1,24 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page session="false"%>
+<html>
+<head>
+<title>Home</title>
+</head>
+<body style="color: black;">
+	<jsp:include page="./layout/header.jsp"></jsp:include>
+	
+	
+
+	<div style="width: 800px; top: 50%; left: 50%; margin: -50px 0 0 -50px;">
+		<img alt="없음" src="/resources/고양이.gif">
+	</div>
+
+
+
+
+	<jsp:include page="./layout/footer.jsp"></jsp:include>
+
+</body>
+</html>
