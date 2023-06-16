@@ -1,0 +1,16 @@
+package com.myweb.www.domain;
+
+public class PagingVO {
+	
+	private int pageNo; // 현재 화면에 출력된 페이지네이션 번호 (누르는 페이지 넘버)
+	private int qty; // 한페이지당 보여지는 게시글 수 (10개)
+	
+	public PagingVO() {
+		
+	}
+	public PagingVO(int pageNo, int qty) {
+		this.pageNo = pageNo;
+		this.qty = qty;
+	}
+	
+}

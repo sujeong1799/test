@@ -1,0 +1,37 @@
+package com.myweb.www;
+
+import javax.inject.Inject;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import com.myweb.www.domain.BoardVO;
+import com.myweb.www.repository.BoardDAO;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
+public class BoardTest {
+	
+	@Inject
+	private BoardDAO bdao;
+	
+	@Test // Test 어노테이션 추가
+	public void insertBoard() {
+		log.info("Test Insert in");
+		for(int i=0; i<300; i++) {
+			
+			BoardVO bvo = new BoardVO();
+			bvo.setTitle("Test title" + i); // 값을 별도로 넣어주고 싶어서 i 붙임
+			bvo.setContent("Test Content");
+			bvo.setWriter("tester");
+			
+			bdao.insert(bvo);
+		}
+		
+	}
+}

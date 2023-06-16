@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.myweb.www.repository.FileDAO">
+	<insert id="insertFile">
+		insert into file(uuid, save_dir, file_name, file_type, bno, file_size)
+		values(#{uuid}, #{save_dir}, #{file_name}, #{file_type}, #{bno}, #{file_size})
+	</insert>
+	<select id="getFileList" resultType="com.myweb.www.domain.FileVO">
+		select * from file where bno = #{bno}
+	</select>
+	<update id="editFile">
+		update board set file uuid = #{uuid}, save_dir = #{save_dir}, file_type = #{file_type}, bno = #{bno}, file_size = #{file_size} where bno = #{bno}
+	</update>
+</mapper>
