@@ -4,3 +4,7 @@
 
 6월 16, 2023 22:56:03.258 NEW SESSION
 6월 16, 2023 22:56:03.258 [16120:12308:0616/225603.256:ERROR:device_event_log_impl.cc(222)] [22:56:03.256] Bluetooth: bluetooth_adapter_winrt.cc:1058 Getting Default Adapter failed.
+
+6월 18, 2023 15:50:11.931 NEW SESSION
+6월 18, 2023 15:50:11.932 [9268:10704:0618/155011.930:ERROR:device_event_log_impl.cc(222)] [15:50:11.929] USB: usb_service_win.cc:104 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: 요소가 없습니다. (0x490)
+6월 18, 2023 17:51:00.108 [12156:7540:0618/175100.108:ERROR:device_event_log_impl.cc(222)] [17:51:00.107] USB: usb_service_win.cc:104 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: 요소가 없습니다. (0x490)

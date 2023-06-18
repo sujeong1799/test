@@ -30,7 +30,27 @@ title varchar(200),
 content text,
 writer varchar(100),
 reg_date datetime default now(),
-read_count int,
+read_count int default 0;,
 isDel varchar(50) default "N",
 primary key(bno));
 
+-- 댓글테이블 2023-06-18
+create table comment(
+cno int not null auto_increment,
+bno int not null,
+writer varchar(100) not null,
+content text,
+reg_date datetime default now(),
+mod_date datetime default now(),
+primary key(cno));
+
+-- 파일테이블 2023-06-18
+create table file(
+uuid varchar(256) not null,
+save_dir varchar(256) not null,
+file_name varchar(256) not null,
+file_type tinyint(1) default 0,
+bno int,
+file_size int,
+reg_date datetime default now(),
+primary key(uuid));

@@ -7,6 +7,7 @@
 	rel="stylesheet"
 	integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
 	crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="../resources/style.css">
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,11 +15,33 @@
 <title>글 목록</title>
 </head>
 <body>
+	<jsp:include page="../layout/header.jsp"></jsp:include>
+	
+		<!-- 검색라인 -->
+	<form action="/board/list" method="get">
+		<div align="center">
+			<!-- var이름은 마음대로 설정해도 됨 -->
+			<c:set value="${ph.pgvo.type }" var="typed"></c:set>
+			<select name="type">
+				<!-- selected : 현재 내가 선택한 값 -->
+				<option ${typed == null ? 'selected' : '' }>선택</option>
+				<option value="t" ${type eq 't' ? 'selected' :'' }>제목</option>
+				<option value="w" ${type eq 'w' ? 'selected' :'' }>작성자</option>
+				<option value="n" ${type eq 'n' ? 'selected' :'' }>글번호</option>
+				<option value="c" ${type eq 'c' ? 'selected' :'' }>내용</option>
+			</select>
+			<input type="text" name="keyword" placeholder="search">
+			<input type="hidden" name="pageNo" value="${ph.pgvo.pageNo }">
+			<input type="hidden" name="qty" value="${ph.pgvo.qty }">
+			<button type="submit">Search</button>
+		</div>
+	</form>
+
 	<div style="width: 700px; margin: 0px auto;">
 		<table class="table">
 			<thead>
 				<tr>
-					<th scope="col">글번호</th>
+					<th scope="col">번호</th>
 					<th scope="col">제목</th>
 					<th scope="col">작성자</th>
 					<th scope="col">조회수</th>
@@ -29,7 +52,7 @@
 				<c:forEach items="${list }" var="bvo">
 					<tr>
 						<th>${bvo.bno }</th>
-						<td><a href="/brd/detail?bno=${bvo.bno }">${bvo.title }</a></td>
+						<td><a href="/board/detail?bno=${bvo.bno }">${bvo.title }</a></td>
 						<td>${bvo.writer }</td>
 						<td>${bvo.read_count }</td>
 						<td>${bvo.reg_date }</td>
@@ -42,7 +65,35 @@
 			<a href="/board/register"><button type="button">글 등록</button></a> <a
 				href="/mem/home2"><button type="button">메인가기</button></a> <br>
 		</div>
+		<br>
+		<!-- 페이징처리 -->
+		<div style="display: table; margin-left: auto; margin-right: auto;">
+			<nav aria-label="Page navigation example">
+				<ul class="pagination">
+
+					<c:if test="${ph.prev }">
+						<li class="page-item"><a class="page-link"
+							href="/board/list?pageNo=${ph.startPage-1 }&qty=${ph.pgvo.qty}">&laquo;</a></li>
+					</c:if>
+
+					<c:forEach begin="${ph.startPage }" end="${ph.endPage }" var="i">
+						<li class="page-item"><a class="page-link"
+							href="/board/list?pageNo=${i }&qty=${ph.pgvo.qty}">${i }</a></li>
+					</c:forEach>
+
+					<c:if test="${ph.next }">
+						<li class="page-item"><a class="page-link"
+							href="/board/list?pageNo=${ph.endPage+1 }&qty=${ph.pgvo.qty}">&raquo;</a></li>
+					</c:if>
+				</ul>
+			</nav>
+		</div>
+
+
 	</div>
+
+	<jsp:include page="../layout/footer.jsp"></jsp:include>
+
 
 </body>
 </html>

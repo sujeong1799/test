@@ -1,0 +1,20 @@
+package com.myweb.www.service;
+
+import java.util.List;
+
+import com.myweb.www.domain.BoardVO;
+import com.myweb.www.domain.PagingVO;
+
+public interface BoardService {
+
+	int insert(BoardVO bvo);
+
+	List<BoardVO> list();
+
+	BoardVO detail(int bno);
+
+	int count(int bno);
+
+	int totalCount(PagingVO pvo);
+
+}
