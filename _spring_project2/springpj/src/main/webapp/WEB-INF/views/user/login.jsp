@@ -14,12 +14,13 @@
 </head>
 <body style="color: rgb(51, 51, 51);">
 
-	<div style="width: 350px; height:300px; margin: 100px auto; border: 1px solid;">
+
+	<div class="logininput">
 		<div style="margin-top: 100px">
 		<form action="/mem/login" method="post">
 			<table style="border: none; ">
 				<tr>
-					<th style="width: 100px;" >아이디</th>
+					<th style="width: 70px;" >아이디</th>
 					<td><input type="text" name="id" placeholder="아이디를 입력해주세요." class="singtd"></td>
 				</tr>
 				<tr>
@@ -28,10 +29,15 @@
 				</tr>
 			</table>
 			<div align="center">
-			<button type="submit" class="btn btn-outline-secondary">LOGIN</button>
+			<button type="submit" class="btn btn-dark">LOGIN</button>
 			</div>
 		</form>
 		</div>
+	</div>
+	<div class="loginbox">
+	</div>
+	<div class="loginpic">
+	<img alt="없음" src="/resources/스파이더로그인3.jpg" style="width: 420px; height: 800px; border-radius: 50px;">
 	</div>
 	
 		<jsp:include page="../layout/footer.jsp"></jsp:include>

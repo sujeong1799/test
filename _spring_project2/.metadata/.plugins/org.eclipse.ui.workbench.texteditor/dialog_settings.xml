@@ -6,8 +6,11 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="uploadFiles"/>
+		<item key="selection" value="myba"/>
 		<list key="findhistory">
+			<item value="myba"/>
+			<item value="favicon"/>
+			<item value="add"/>
 			<item value="uploadFiles"/>
 			<item value="uplo"/>
 			<item value="up"/>

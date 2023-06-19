@@ -7,20 +7,20 @@
 	rel="stylesheet"
 	integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
 	crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="../resources/style.css">
 <html>
 <head>
 <title>Home</title>
 </head>
-<body style="color: black;">
+<body>
 
 
-	<div style="width: 900px; margin: 0 auto;">
-		<img alt="없음" src="/resources/고양이.gif" style="width: 900px;">
-		<div align="center">
-			<br>
-			<a href="/mem/login"><button type="button" class="btn btn-outline-secondary">LOGIN</button></a>
-			<a href="/mem/signup"><button type="button" class="btn btn-outline-secondary">JOIN</button></a>
-		</div>
+	<div class="homebtn">
+		<a href="/mem/login"><button type="button" class="btn btn-light">LOGIN</button></a>
+		<a href="/mem/signup"><button type="button" class="btn btn-light">JOIN</button></a>
+	</div>
+	<div class="homepic">
+		<img alt="없음" src="/resources/스파이더메인.jpg" style="width: 100%; height: 80%; border-radius: 50px;">
 	</div>
 
 	<script type="text/javascript">
@@ -37,8 +37,6 @@
 			alert("로그아웃되었습니다.")
 		}
 	</script>
-
-	<jsp:include page="./layout/footer.jsp"></jsp:include>
 
 </body>
 </html>

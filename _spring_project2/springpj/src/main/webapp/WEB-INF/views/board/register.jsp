@@ -17,14 +17,13 @@
 <body style="color: black;">
 	<jsp:include page="../layout/header.jsp"></jsp:include>
 
-	<div style="width: 500px; margin: 100px auto;">
-		<h3>자유게시판</h3>
-		<hr style="border: solid 1px black;">
+
+	<div class="reginput">
 		<form action="/board/register" method="post"
 			enctype="multipart/form-data">
 
 			<table style="border: none;">
-				<tr>
+				<tr style="margin-top: 30px;">
 					<th style="width: 100px;">제목</th>
 					<td><input class="singtd2" type="text" name="title"
 						placeholder="제목을 입력해주세요."></td>
@@ -40,20 +39,29 @@
 							name="content" placeholder="내용을 입력해주세요."></textarea></td>
 				</tr>
 			</table>
-
-			<div style="width: 100px; display: inline-block;"><p style="font-weight: 600; color: rgb(51, 51, 51)">file</p></div>
+			<br>
+			<div style="width: 100px; display: inline-block;">
+				<p style="font-weight: 600; color: black">file</p>
+			</div>
 			<input type="file" id="file" name="files" multiple
 				style="display: none;">
-			<button type="button" id="trigger" class="btn btn-secondary">FileUpload</button>
+			<button type="button" id="trigger" class="btn btn-light">FileUpload</button>
 			<div id="fileZone"></div>
 
 
 			<br>
 			<div align="center">
-				<button id="regBtn" type="submit" class="btn btn-outline-secondary">등록</button>
+				<button id="regBtn" type="submit" class="btn  btn-dark">등록</button>
 			</div>
 		</form>
 	</div>
+	<div class="regbox">
+	</div>
+	<div class="regback">
+		<img alt="없음" src="/resources/글작성배경.jpg"
+			style="width: 1400px; height: 800px; border-radius: 50px;">
+	</div>
+
 	<script type="text/javascript" src="/resources/js/boardRegister.js"></script>
 </body>
 </html>

@@ -45,7 +45,7 @@
 			</table>
 			<hr>
 			<div align="center">
-			<button type="button" class="btn btn-outline-secondary">등록</button>
+			<button type="submit" class="btn btn-outline-secondary">등록</button>
 			</div>
 		</form>
 	</div>
