@@ -98,3 +98,6 @@
 6월 19, 2023 12:43:26.912 [1200:6220:0619/124326.912:ERROR:interface_endpoint_client.cc(697)] Message 1 rejected by interface blink.mojom.WidgetHost
 6월 19, 2023 12:52:10.367 [1200:6220:0619/125210.367:ERROR:interface_endpoint_client.cc(697)] Message 1 rejected by interface blink.mojom.WidgetHost
 6월 19, 2023 14:36:38.634 [1200:6220:0619/143638.634:ERROR:interface_endpoint_client.cc(697)] Message 0 rejected by interface blink.mojom.WidgetHost
+
+6월 19, 2023 18:12:51.921 NEW SESSION
+6월 19, 2023 18:12:51.921 [8412:5804:0619/181251.920:ERROR:device_event_log_impl.cc(222)] [18:12:51.919] Bluetooth: bluetooth_adapter_winrt.cc:1058 Getting Default Adapter failed.

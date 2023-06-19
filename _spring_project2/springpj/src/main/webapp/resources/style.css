@@ -14,10 +14,12 @@
 	margin-bottom: 10px;
 	border-radius: 5px;
 	border: 1px solid rgb(51, 51, 51);
+	padding-left: 10px;
 }
 
 .noresize {
 	resize: none; /* 사이즈 사용자 임의 변경 불가 */
+	padding-left: 10px;
 }
 
 .homeBtn {
@@ -62,7 +64,7 @@
 
 .regback {
 	width: 80%;
-	margin: 50px auto;
+	margin: 20px 260px 0;
 	position: relative;
 }
 
@@ -70,19 +72,55 @@
 	width: 600px;
 	height: 600px;
 	position: absolute;
-	margin: 12% 600px 0;
+	margin: 200px 650px 0;
 	z-index: 999;
 }
 
 .regbox {
-	background-color: white;
+	background-color: black;
 	width: 1400px;
-	height : 800px;
-	margin-top: 50px;
-	margin-left: 190px;
+	margin-top: 20px;
+	margin-left: 260px;
 	position: absolute;
 	z-index: 99;
 	opacity: 0.5;
-	border-radius: 30px;
+	border-radius: 50px;
 	height: 800px;
+}
+
+.listall{
+	width: 700px;
+	position: absolute;
+	margin: 120px 620px;
+	z-index: 999;
+	
+}
+
+.listpic{
+	margin: 20px 260px;
+	position: relative;
+}
+
+.listbox{
+	background-color: black;
+	width: 1400px;
+	margin-top: 19px;
+	margin-left: 260px;
+	position: absolute;
+	z-index: 99;
+	opacity: 0.7;
+	border-radius: 50px;
+	height: 800px;
+}
+
+.listA{
+	color: white;
+	text-decoration: none;
+}
+
+.search{
+	width: 200px;
+	height: 35px;
+	border-radius: 10px;
+	padding-left: 10px;
 }

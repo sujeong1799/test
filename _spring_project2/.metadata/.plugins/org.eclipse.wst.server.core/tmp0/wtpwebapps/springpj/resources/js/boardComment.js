@@ -65,9 +65,9 @@ function getCommentList(bno){
             for(let cvo of result){
                 let li = `<li data-cno="${cvo.cno}"><div>`;
                 li += `<div>${cvo.writer}</div>`;
-                li += `<input type="text" id="cmtTextMod" value="${cvo.content}"></div`;
+                li += `<input type="text" id="cmtTextMod" value=" ${cvo.content}"></div>`;
                 li += `<span>${cvo.mod_date}<span>`;
-                li += `<button type="button"  class="modBtn">%</button>`;
+                li += `<button type="button"  class="modBtn btn btn-outline-dark" >%</button>`;
                 li += `<button type="button" class="delBtn">X</button></li>`;
                 ul.innerHTML+=li;
             }
@@ -146,7 +146,7 @@ document.addEventListener('click', (e)=>{
         console.log(cnoVal);
         removeCommentToServer(cnoVal).then(result =>{
             if(result > 0){
-                alert('댓글 삭제 성공!');
+                alert('댓글 삭제 성공');
             }
             getCommentList(bnoVal);
         })

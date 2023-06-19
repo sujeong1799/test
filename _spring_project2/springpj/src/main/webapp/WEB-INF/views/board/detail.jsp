@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -17,15 +17,17 @@
 <body style="color: black;">
 
 	<jsp:include page="../layout/header.jsp"></jsp:include>
-	<div style="width: 700px; margin: 0 auto;">
-	 	<c:set var="bvo" value="${boardDTO.bvo }"></c:set>
+
+	<div style="width: 500px; margin: 100px auto 20px;">
+		<hr>
+		<c:set var="bvo" value="${boardDTO.bvo }"></c:set>
 		<table class="table">
 			<tr>
 				<th>번호</th>
 				<td>${bvo.bno }</td>
 			</tr>
 			<tr>
-				<th scope="col" style="width: 150px">제목</th>
+				<th scope="col" style="width: 150px" align="center">제목</th>
 				<td>${bvo.title }</td>
 			</tr>
 			<tr>
@@ -45,9 +47,9 @@
 				<td>${bvo.content }</td>
 			</tr>
 		</table>
-		
+
 		<!-- file 표시 영역 -->
- 		<c:set var="flist" value="${boardDTO.flist }"></c:set>
+		<c:set var="flist" value="${boardDTO.flist }"></c:set>
 		<div>
 			<ul>
 				<c:forEach items="${flist }" var="fvo">
@@ -68,26 +70,31 @@
 				</c:forEach>
 			</ul>
 		</div>
-		<a href="/board/list"><button>목록</button></a>
-		<!-- 로그인 i와 게시글의 작성자가 같지않으면 수정, 삭제버튼 안보이게 -->
-		<c:if test="${ses != null && ses.id == bvo.writer }">
-			<a href="/board/modify?bno=${bvo.bno }"><button>수정</button></a>
-			<a href="/board/delete?bno=${bvo.bno }"><button>삭제</button></a>
-		</c:if>
+		<div align="center">
+			<a href="/board/list"><button class="btn btn-outline-dark">목록</button></a>
+			<!-- 로그인 i와 게시글의 작성자가 같지않으면 수정, 삭제버튼 안보이게 -->
+			<c:if test="${ses != null && ses.id == bvo.writer }">
+				<a href="/board/modify?bno=${bvo.bno }"><button
+						class="btn btn-outline-dark">수정</button></a>
+				<a href="/board/delete?bno=${bvo.bno }"><button
+						class="btn btn-outline-dark">삭제</button></a>
+			</c:if>
+		</div>
+		<hr>
 	</div>
 
-	<br>
 	<!-- 댓글 라인 -->
-	<div align="center">
+	<div style="width: 300px; margin: 0 auto;">
 
 
 		<!-- 댓글 작성 라인 -->
 		<div>
 			<span id="cmtWriter"> ${bvo.writer }</span> <input type="text"
 				id="cmtText" placeholder="댓글을 적어주세요.">
-			<button type="button" id="cmtPostBtn">등록</button>
+			<button type="button" id="cmtPostBtn" class="btn btn-outline-dark">등록</button>
 		</div>
-
+	</div>
+	<div style="width: 500px; margin: 0 auto;">
 
 		<!-- 댓글 표시 라인 -->
 		<div>
@@ -97,14 +104,14 @@
 					<div>
 						<div>Writer</div>
 						Content for Comment
-					</div> <span>mod_date</span>
+					</div><span>mod_date</span>
 				</li>
 			</ul>
 		</div>
 	</div>
 
 	<jsp:include page="../layout/footer.jsp"></jsp:include>
-	
+
 	<script type="text/javascript">
 		const bnoVal = '<c:out value="${bvo.bno}" />';
 		console.log("bno > " + bnoVal);

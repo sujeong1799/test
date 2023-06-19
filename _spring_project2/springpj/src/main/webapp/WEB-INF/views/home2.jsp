@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -19,7 +19,7 @@
 	<div style="width: 1400px; height: 800px; margin: 20px auto; background-color: black; border-radius: 50px">
 		<div style="width: 600px; margin: 20px auto;">
 			<div>
-				<img alt="없음" src="/resources/home2white.gif"
+				<img alt="없음" src="/resources/휘리릭.gif"
 					style="width: 600px; height: 200px; margin-top: 100px">
 			</div>
 			<div>

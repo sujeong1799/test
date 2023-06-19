@@ -14,9 +14,8 @@
 <meta charset="UTF-8">
 <title>글 작성중</title>
 </head>
-<body style="color: black;">
+<body style="color: white;">
 	<jsp:include page="../layout/header.jsp"></jsp:include>
-
 
 	<div class="reginput">
 		<form action="/board/register" method="post"
@@ -35,13 +34,13 @@
 				</tr>
 				<tr>
 					<th>내용</th>
-					<td><textarea class="noresize" rows="10" cols="50"
+					<td><textarea class="noresize" rows="10" cols="49"
 							name="content" placeholder="내용을 입력해주세요."></textarea></td>
 				</tr>
 			</table>
 			<br>
 			<div style="width: 100px; display: inline-block;">
-				<p style="font-weight: 600; color: black">file</p>
+				<p style="font-weight: 600; color: white">file</p>
 			</div>
 			<input type="file" id="file" name="files" multiple
 				style="display: none;">
@@ -51,14 +50,13 @@
 
 			<br>
 			<div align="center">
-				<button id="regBtn" type="submit" class="btn  btn-dark">등록</button>
+				<button id="regBtn" type="submit" class="btn btn-light">등록</button>
 			</div>
 		</form>
 	</div>
-	<div class="regbox">
-	</div>
+	<div class="regbox"></div>
 	<div class="regback">
-		<img alt="없음" src="/resources/글작성배경.jpg"
+		<img alt="없음" src="/resources/스파이더단체.jpg"
 			style="width: 1400px; height: 800px; border-radius: 50px;">
 	</div>
 
