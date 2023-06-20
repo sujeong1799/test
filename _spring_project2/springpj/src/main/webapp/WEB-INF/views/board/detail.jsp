@@ -12,16 +12,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>WITH ME</title>
+<title>NewSpider</title>
 </head>
-<body style="color: black;">
+<body class="detailpic" style="color: white;">
 
 	<jsp:include page="../layout/header.jsp"></jsp:include>
 
-	<div style="width: 500px; margin: 100px auto 20px;">
+	<div class="detailAll">
 		<hr>
 		<c:set var="bvo" value="${boardDTO.bvo }"></c:set>
-		<table class="table">
+		<table class="table" style="border-color: gray; color: white;">
 			<tr>
 				<th>번호</th>
 				<td>${bvo.bno }</td>
@@ -71,46 +71,49 @@
 			</ul>
 		</div>
 		<div align="center">
-			<a href="/board/list"><button class="btn btn-outline-dark">목록</button></a>
+			<a href="/board/list"><button class="btn text-white" style="background-color: DarkRed">목록</button></a>
 			<!-- 로그인 i와 게시글의 작성자가 같지않으면 수정, 삭제버튼 안보이게 -->
 			<c:if test="${ses != null && ses.id == bvo.writer }">
 				<a href="/board/modify?bno=${bvo.bno }"><button
-						class="btn btn-outline-dark">수정</button></a>
+						class="btn text-white" style="background-color: DarkRed">수정</button></a>
 				<a href="/board/delete?bno=${bvo.bno }"><button
-						class="btn btn-outline-dark">삭제</button></a>
+						class="btn text-white" style="background-color: DarkRed">삭제</button></a>
 			</c:if>
 		</div>
 		<hr>
-	</div>
-
-	<!-- 댓글 라인 -->
-	<div style="width: 300px; margin: 0 auto;">
+		<!-- 댓글 라인 -->
+		<div style="width: 300px; margin: 0 auto;">
 
 
-		<!-- 댓글 작성 라인 -->
-		<div>
-			<span id="cmtWriter"> ${bvo.writer }</span> <input type="text"
-				id="cmtText" placeholder="댓글을 적어주세요.">
-			<button type="button" id="cmtPostBtn" class="btn btn-outline-dark">등록</button>
+			<!-- 댓글 작성 라인 -->
+			<div>
+				<span id="cmtWriter"> ${bvo.writer }</span> <input type="text"
+					id="cmtText" placeholder="댓글을 적어주세요.">
+				<button type="button" id="cmtPostBtn" class="btn text-white" style="background-color: DarkRed">등록</button>
+			</div>
 		</div>
-	</div>
-	<div style="width: 500px; margin: 0 auto;">
-
-		<!-- 댓글 표시 라인 -->
-		<div>
-			<!-- li 하나가 하나의 댓글 객체 -->
-			<ul id="cmtListArea" style="list-style: none;">
-				<li>
-					<div>
-						<div>Writer</div>
-						Content for Comment
-					</div><span>mod_date</span>
-				</li>
-			</ul>
+		<div style="width: 600px;">
+	<br>
+			<!-- 댓글 표시 라인 -->
+			<div>
+				<!-- li 하나가 하나의 댓글 객체 -->
+				<ul id="cmtListArea" style="list-style: none; margin: 0">
+					<li>
+						<div>
+							<div>Writer</div>
+							Content for Comment
+						</div>
+						<span>mod_date</span>
+					</li>
+				</ul>
+			</div>
 		</div>
-	</div>
+	</div> <!-- detailAll끝  -->
 
-	<jsp:include page="../layout/footer.jsp"></jsp:include>
+
+
+	<div class="detailbox"></div>
+
 
 	<script type="text/javascript">
 		const bnoVal = '<c:out value="${bvo.bno}" />';
@@ -120,6 +123,7 @@
 	<script type="text/javascript">
 		getCommentList(bnoVal);
 	</script>
+
 
 </body>
 </html>

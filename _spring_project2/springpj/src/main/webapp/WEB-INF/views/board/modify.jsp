@@ -7,18 +7,24 @@
 	rel="stylesheet"
 	integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
 	crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="../resources/style.css">
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>NewSpider</title>
 </head>
-<body>
-	<div style="width: 700px;">
+<body class="detailpic">
+
+	<jsp:include page="../layout/header.jsp"></jsp:include>
+
+
+	<div class="modifyAll">
 		<c:set var="bvo" value="${boardDTO.bvo }"></c:set>
-		<form action="/board/modify?bno=${bvo.bno }" method="post" enctype="multipart/form-data">
-			<table class="table">
+		<form action="/board/modify?bno=${bvo.bno }" method="post"
+			enctype="multipart/form-data">
+			<table class="table" style="border-color: gray; color: white;">
 				<tr>
 					<th>글 번호</th>
 					<td><input name="bno" value="${bvo.bno }" readonly="readonly"></td>
@@ -48,10 +54,10 @@
 					<th>첨부파일</th>
 					<td><input type="file" id="file" name="files" multiple
 						style="display: none;"> <a><button type="button"
-								id="trigger" class="btn btn-secondary">FileUpload</button></a><br>
-						<div id="fileZone"></td>
+								id="trigger" class="btn btn-light">FileUpload</button></a><br>
+						<div id="fileZone"></div></td>
 				</tr>
-			</table>
+			</table >
 			<!-- 파일 표시 라인 -->
 			<c:set var="flist" value="${boardDTO.flist }"></c:set>
 			<div>
@@ -63,26 +69,26 @@
 									<div>
 										<img alt="없음"
 											src="/upload/${fn: replace(fvo.save_dir,'\\','/')}/${fvo.uuid }_th_${fvo.file_name}">
+											
 									</div>
 								</c:when>
-								<c:otherwise>
-									<div>
-										<!-- 클립모양 같은 파일 아이콘 모양 값을 넣을 수 있음. -->
-
-									</div>
-								</c:otherwise>
-							</c:choose> <!-- 그림만 넣고싶다면 여기까지하고 정보 넣고 싶으면 div 또 넣어.. -->
-
-							<div>${fvo.file_name }</div>
-							<button type="button" class="file-x" data-uuid="${fvo.uuid }">파일삭제</button>
+							</c:choose>
+							<div style="color: white;">
+							${fvo.file_name }
+							<button type="button" class="file-x btn btn-outline-light" data-uuid="${fvo.uuid }">파일삭제</button></div>
 						</li>
+						<br>
 					</c:forEach>
 				</ul>
 			</div>
-			<button id="regBtn" type="submit">수정완료</button>
-
+			<br>
+			<div align="center">
+				<button id="regBtn" type="submit" class="btn text-white" style="background-color: DarkRed" >수정완료</button>
+			</div>
 		</form>
 	</div>
+	
+	<div class="modifybox"></div>
 	<script type="text/javascript">
 		const bnoVal = '<c:out value="${boardDTO.bvo.bno}" />';
 		console.log("bno > " + bnoVal);

@@ -10,25 +10,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>User Home</title>
+<title>NewSpider</title>
 </head>
-<body>
+<body style="background-color: black;">
 
 	<jsp:include page="./layout/header.jsp"></jsp:include>
 
-	<div style="width: 1400px; height: 800px; margin: 20px auto; background-color: black; border-radius: 50px">
-		<div style="width: 600px; margin: 20px auto;">
-			<div>
-				<img alt="없음" src="/resources/휘리릭.gif"
-					style="width: 600px; height: 200px; margin-top: 100px">
-			</div>
-			<div>
-				<img alt="없음" src="/resources/home2dap.gif"
-					style="width: 600px; height: 200px;">
-			</div>
-		</div>
-		<div style="width: 600px; margin: 0 auto;">
-			<a href="/board/list"> <img alt="없음" src="/resources/거미로고.png" style="width: 75px; margin-left: 280px"> </a>
+	<div style="width: 1000px; height: 600px; margin: 50px auto 0; background-image:url('/resources/네온스파이더.jpg'); background-repeat:no-repeat; background-size:100%; border-radius: 50px">
+		<div style="width: 600px; margin: 80px auto 0;">
+			<a href="/board/list"> <img alt="없음" src="/resources/거미로고.png" style="width: 75px; margin-left: 270px; margin-top: 60px;"> </a>
 		</div>
 	</div>
 
@@ -40,9 +30,20 @@
 
 	<script type="text/javascript">
 		const msg_login = `<c:out value="${msg_login}"/>`;
+		const msg_modify = `<c:out value="${msg_modify}"/>`;
+
 		console.log(msg_login);
+		console.log(msg_modify);
+		
 		if (msg_login == '1') {
 			alert("${ses.id}님 반가워요!");
+		}
+		
+		if(msg_modify == '1'){
+			alert("회원정보수정 성공");
+		}
+		if(msg_modify == '0'){
+			alert("회원정보수정 실패");
 		}
 	</script>
 

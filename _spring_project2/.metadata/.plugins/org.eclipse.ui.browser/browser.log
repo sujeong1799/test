@@ -101,3 +101,17 @@
 
 6월 19, 2023 18:12:51.921 NEW SESSION
 6월 19, 2023 18:12:51.921 [8412:5804:0619/181251.920:ERROR:device_event_log_impl.cc(222)] [18:12:51.919] Bluetooth: bluetooth_adapter_winrt.cc:1058 Getting Default Adapter failed.
+
+6월 20, 2023 09:52:36.258 NEW SESSION
+6월 20, 2023 09:52:36.258 [2808:1316:0620/095236.256:ERROR:interface_endpoint_client.cc(697)] Message 1 rejected by interface blink.mojom.WidgetHost
+6월 20, 2023 10:22:14.623 [6804:2084:0620/102214.623:ERROR:interface_endpoint_client.cc(697)] Message 1 rejected by interface blink.mojom.WidgetHost
+6월 20, 2023 11:09:50.395 [8268:10300:0620/110950.395:ERROR:interface_endpoint_client.cc(697)] Message 0 rejected by interface blink.mojom.WidgetHost
+6월 20, 2023 11:10:17.923 [8268:10300:0620/111017.923:ERROR:interface_endpoint_client.cc(697)] Message 0 rejected by interface blink.mojom.WidgetHost
+6월 20, 2023 11:28:00.462 [8268:10300:0620/112800.462:ERROR:interface_endpoint_client.cc(697)] Message 0 rejected by interface blink.mojom.WidgetHost
+6월 20, 2023 13:46:59.626 [11772:13296:0620/134659.626:ERROR:interface_endpoint_client.cc(697)] Message 1 rejected by interface blink.mojom.WidgetHost
+6월 20, 2023 14:01:30.725 [9908:8216:0620/140130.725:ERROR:interface_endpoint_client.cc(697)] Message 0 rejected by interface blink.mojom.WidgetHost
+6월 20, 2023 14:02:44.583 [9908:8216:0620/140244.583:ERROR:interface_endpoint_client.cc(697)] Message 0 rejected by interface blink.mojom.WidgetHost
+6월 20, 2023 14:03:40.731 [9908:8216:0620/140340.731:ERROR:interface_endpoint_client.cc(697)] Message 1 rejected by interface blink.mojom.WidgetHost
+6월 20, 2023 14:03:40.731 [9908:8216:0620/140340.731:ERROR:interface_endpoint_client.cc(697)] Message 1 rejected by interface blink.mojom.WidgetHost
+6월 20, 2023 14:20:02.344 [5252:11560:0620/142002.344:ERROR:interface_endpoint_client.cc(697)] Message 1 rejected by interface blink.mojom.WidgetHost
+6월 20, 2023 15:05:31.400 [6096:7392:0620/150531.400:ERROR:interface_endpoint_client.cc(697)] Message 0 rejected by interface blink.mojom.WidgetHost

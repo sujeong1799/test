@@ -6,6 +6,7 @@
 	margin-bottom: 10px;
 	border-radius: 5px;
 	border: 1px solid rgb(51, 51, 51);
+	padding-left: 10px;
 }
 
 .singtd2 { /* register input css*/
@@ -88,23 +89,22 @@
 	height: 800px;
 }
 
-.listall{
+.listall {
 	width: 700px;
 	position: absolute;
 	margin: 120px 620px;
 	z-index: 999;
-	
 }
 
-.listpic{
+.listpic {
 	margin: 20px 260px;
 	position: relative;
 }
 
-.listbox{
+.listbox {
 	background-color: black;
 	width: 1400px;
-	margin-top: 19px;
+	margin-top: 20px;
 	margin-left: 260px;
 	position: absolute;
 	z-index: 99;
@@ -113,14 +113,110 @@
 	height: 800px;
 }
 
-.listA{
+.listA {
 	color: white;
 	text-decoration: none;
 }
 
-.search{
+.search {
 	width: 200px;
 	height: 35px;
 	border-radius: 10px;
 	padding-left: 10px;
+}
+
+.detailbox {
+	background-color: black;
+	width: 700px;
+	margin-top: 50px;
+	margin-left: 620px;
+	position: absolute;
+	z-index: 99;
+	opacity: 0.7;
+	border-radius: 50px;
+	height: 80%;
+}
+
+.detailAll {
+	width: 600px;
+	position: absolute;
+	margin: 70px 670px;
+	z-index: 999;
+}
+
+.detailpic {
+	background-image: url("/resources/상세스파이더.jpg");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	position: relative;
+	background-size: 100%;
+}
+
+.modifyAll {
+	width: 600px;
+	margin: 100px 670px;
+	position: absolute;
+	z-index: 999;
+}
+
+.modifybox {
+	background-color: black;
+	width: 700px;
+	margin-top: 50px;
+	margin-left: 620px;
+	position: absolute;
+	z-index: 99;
+	opacity: 0.8;
+	border-radius: 50px;
+	height: 85%;
+}
+
+.joinAll {
+	width: 500px;
+	margin: 100px 680px;
+	position: absolute;
+	z-index: 999;
+}
+
+.joinbox {
+	background-color: black;
+	width: 550px;
+	margin-top: 20px;
+	margin-left: 650px;
+	position: absolute;
+	z-index: 99;
+	opacity: 0.7;
+	border-radius: 50px;
+	height: 700px
+}
+
+.joinpic {
+	width: 80%;
+	margin: 50px auto;
+	position: relative;
+}
+
+.editAll{
+	width: 500px;
+	margin: 100px 750px;
+	position: absolute;
+	z-index: 999;
+}
+
+.editbox{
+	background-color: black;
+	width: 550px;
+	margin-top: 20px;
+	margin-left: 650px;
+	position: absolute;
+	z-index: 99;
+	opacity: 0.7;
+	border-radius: 50px;
+	height: 700px
+}
+
+.editpic {
+	width: 80%;
+	margin: 50px auto;
+	position: relative;
 }

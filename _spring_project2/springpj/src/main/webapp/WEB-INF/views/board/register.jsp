@@ -12,9 +12,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>글 작성중</title>
+<title>NewSpider</title>
 </head>
-<body style="color: white;">
+<body style="color: white; background-color: black;">
 	<jsp:include page="../layout/header.jsp"></jsp:include>
 
 	<div class="reginput">
@@ -37,20 +37,19 @@
 					<td><textarea class="noresize" rows="10" cols="49"
 							name="content" placeholder="내용을 입력해주세요."></textarea></td>
 				</tr>
+				<tr>
+					<!-- 파일 등록 라인 -->
+					<th>첨부파일</th>
+					<td><input type="file" id="file" name="files" multiple
+						style="display: none;"> <a><button type="button"
+								id="trigger" class="btn btn-light">FileUpload</button></a><br>
+						<div id="fileZone"></div></td>
+				</tr>
 			</table>
 			<br>
-			<div style="width: 100px; display: inline-block;">
-				<p style="font-weight: 600; color: white">file</p>
-			</div>
-			<input type="file" id="file" name="files" multiple
-				style="display: none;">
-			<button type="button" id="trigger" class="btn btn-light">FileUpload</button>
-			<div id="fileZone"></div>
-
-
-			<br>
 			<div align="center">
-				<button id="regBtn" type="submit" class="btn btn-light">등록</button>
+				<button id="regBtn" type="submit" class="btn text-white"
+					style="background-color: DarkRed">등록</button>
 			</div>
 		</form>
 	</div>
@@ -59,7 +58,13 @@
 		<img alt="없음" src="/resources/스파이더단체.jpg"
 			style="width: 1400px; height: 800px; border-radius: 50px;">
 	</div>
-
+	
+	<script type="text/javascript">
+		const bnoVal = '<c:out value="${boardDTO.bvo.bno}" />';
+		console.log("bno > " + bnoVal);
+	</script>
 	<script type="text/javascript" src="/resources/js/boardRegister.js"></script>
+	<script type="text/javascript" src="/resources/js/boardModify.js"></script>
+	
 </body>
 </html>

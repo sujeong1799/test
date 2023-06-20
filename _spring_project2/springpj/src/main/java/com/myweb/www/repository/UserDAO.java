@@ -8,4 +8,6 @@ public interface UserDAO {
 
 	int insertUser(UserVO uvo);
 
+	int editUser(UserVO uvo);
+
 }

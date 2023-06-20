@@ -12,7 +12,7 @@
 <meta charset="UTF-8">
 <title>LOGIN</title>
 </head>
-<body style="color: rgb(51, 51, 51);">
+<body style="color: balck;">
 
 
 	<div class="logininput">
@@ -40,6 +40,5 @@
 	<img alt="없음" src="/resources/스파이더로그인3.jpg" style="width: 420px; height: 800px; border-radius: 50px;">
 	</div>
 	
-		<jsp:include page="../layout/footer.jsp"></jsp:include>
 </body>
 </html>

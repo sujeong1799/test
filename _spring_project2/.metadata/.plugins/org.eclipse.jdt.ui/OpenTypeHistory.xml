@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <typeInfoHistroy>
-    <typeInfo handle="=springpj/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.myweb.www.service{UserService.java[UserService" modifiers="513" timestamp="1686921996095"/>
-    <typeInfo handle="=springpj/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.myweb.www.service{BoardService.java[BoardService" modifiers="513" timestamp="1687085353325"/>
-    <typeInfo handle="=springpj/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.myweb.www.service{CommentService.java[CommentService" modifiers="513" timestamp="1687081043717"/>
+    <typeInfo handle="=springpj/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.myweb.www.service{UserService.java[UserService" modifiers="513" timestamp="1687133119824"/>
+    <typeInfo handle="=springpj/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.myweb.www.service{BoardService.java[BoardService" modifiers="513" timestamp="1687133119824"/>
+    <typeInfo handle="=springpj/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.myweb.www.service{CommentService.java[CommentService" modifiers="513" timestamp="1687133119824"/>
 </typeInfoHistroy>

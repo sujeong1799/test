@@ -1,6 +1,11 @@
 package com.myweb.www.controller;
 
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.request;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
+
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -10,7 +15,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.myweb.www.domain.BoardDTO;
+import com.myweb.www.domain.BoardVO;
+import com.myweb.www.domain.FileVO;
 import com.myweb.www.domain.UserVO;
 import com.myweb.www.service.UserService;
 
@@ -77,6 +88,30 @@ public class UserController {
 		}
 
 		return "home2";
+	}
+	
+	@GetMapping("modify")
+	public String modify(Model m,  HttpServletRequest request) {
+		HttpSession ses = request.getSession();
+		UserVO uvo = (UserVO) ses.getAttribute("ses");
+		m.addAttribute("uvo", uvo);
+		return "/user/modify";
+	}
+	
+	@PostMapping("modify")
+	public String modify(Model m, UserVO uvo, RedirectAttributes rAttr, HttpServletRequest request) {
+		log.info(">>> uvo >" + uvo.toString());
+		int isOk = usv.edit(uvo);
+		if(isOk > 0) {
+			request.getSession().removeAttribute("ses");
+			request.getSession().invalidate();
+			m.addAttribute("msg_modify", 1);
+			log.info("변경 성공");
+		}else {
+			m.addAttribute("msg_modify", 0);
+			log.info("변경 실패");
+		}
+		return "redirect:home2";
 	}
 	
 	@GetMapping("/home2")

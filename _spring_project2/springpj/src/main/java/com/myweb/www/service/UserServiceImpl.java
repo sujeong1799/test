@@ -64,6 +64,22 @@ public class UserServiceImpl implements UserService {
 			return null;
 		}
 	}
+
+	@Override
+	public int edit(UserVO uvo) {
+		log.info(">> edit service 진입");
+		
+		if (uvo.getPw() == null || uvo.getPw().length() == 0) {
+			return 0;
+		}
+		String pw = uvo.getPw();
+		String encodePw = passwordencoder.encode(pw);
+		uvo.setPw(encodePw);
+		
+		int isOk = udao.editUser(uvo);
+		
+		return isOk;
+	}
 	
 
 }

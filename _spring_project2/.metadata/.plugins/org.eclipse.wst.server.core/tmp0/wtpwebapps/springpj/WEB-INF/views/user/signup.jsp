@@ -10,14 +10,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원가입</title>
+<title>JOIN</title>
 </head>
-<body style="color: rgb(51, 51, 51);">
+<body style="color: white;">
 
-	<div style="width: 350px; margin: 0 auto;">
+	<div class="joinAll" align="center">
 	<hr>
 		<form action="/mem/signup" method="post">
-			<table style="border: none; ">
+			<table style="border: none;">
 				<tr>
 					<th style="width: 100px;" >아이디</th>
 					<td><input type="text" name="id" placeholder="아이디를 입력해주세요." class="singtd"></td>
@@ -45,12 +45,15 @@
 			</table>
 			<hr>
 			<div align="center">
-			<button type="submit" class="btn btn-outline-secondary">등록</button>
+			<button type="submit" class="btn btn-outline-light">등록</button>
 			</div>
 		</form>
 	</div>
-	
-		<jsp:include page="../layout/footer.jsp"></jsp:include>
+	<div class="joinbox">
+	</div>
+	<div class="joinpic">
+	<img alt="없음" src="/resources/그림스파이더.jpg" style="width: 100%; height: 80%; border-radius: 50px;">
+	</div>
 	
 </body>
 </html>

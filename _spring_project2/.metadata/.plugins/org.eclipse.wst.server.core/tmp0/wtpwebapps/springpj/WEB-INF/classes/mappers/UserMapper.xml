@@ -10,5 +10,7 @@ select * from user where id = #{id}
 insert into user(id, pw, name, email, home, birth)
 values(#{id}, #{pw}, #{name}, #{email}, #{home}, #{birth})
 </insert>
-
+<update id="editUser">
+update user set pw = #{pw}, email = #{email}, home = #{home} where id = #{id}
+</update>
 </mapper>

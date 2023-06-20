@@ -8,4 +8,6 @@ public interface UserService {
 
 	UserVO isUser(String id, String pw);
 
+	int edit(UserVO uvo);
+
 }

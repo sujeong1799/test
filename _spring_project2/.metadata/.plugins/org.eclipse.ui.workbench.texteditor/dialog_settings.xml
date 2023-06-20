@@ -6,8 +6,10 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="myba"/>
+		<item key="selection" value="listA"/>
 		<list key="findhistory">
+			<item value="listA"/>
+			<item value="list"/>
 			<item value="myba"/>
 			<item value="favicon"/>
 			<item value="add"/>

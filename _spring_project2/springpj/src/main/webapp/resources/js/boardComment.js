@@ -64,11 +64,11 @@ function getCommentList(bno){
             ul.innerHTML = "";
             for(let cvo of result){
                 let li = `<li data-cno="${cvo.cno}"><div>`;
-                li += `<div>${cvo.writer}</div>`;
-                li += `<input type="text" id="cmtTextMod" value=" ${cvo.content}"></div>`;
-                li += `<span>${cvo.mod_date}<span>`;
-                li += `<button type="button"  class="modBtn btn btn-outline-dark" >%</button>`;
-                li += `<button type="button" class="delBtn">X</button></li>`;
+                li += `${cvo.writer} `;
+                li += `<input type="text" id="cmtTextMod" value=" ${cvo.content}"> `;
+                li += `${cvo.mod_date} `;
+                li += `<button type="button"  class="modBtn btn btn-outline-light">수정</button> `;
+                li += `<button type="button" class="delBtn btn btn-outline-light">삭제</button></div></li><br>`;
                 ul.innerHTML+=li;
             }
         }else{

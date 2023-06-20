@@ -12,19 +12,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>글 목록</title>
+<title>NewSpider</title>
 </head>
-<body style="color: white;">
+<body style="color: white; background-color: black;">
 	<jsp:include page="../layout/header.jsp"></jsp:include>
 
 	<div class="listall">
 		<!-- 검색라인 -->
 		<form action="/board/list" method="get">
 			<div align="center">
-				<!-- var이름은 마음대로 설정해도 됨 -->
 				<c:set value="${ph.pgvo.type }" var="typed"></c:set>
 				<select name="type">
-					<!-- selected : 현재 내가 선택한 값 -->
 					<option ${typed == null ? 'selected' : '' }>선택</option>
 					<option value="t" ${type eq 't' ? 'selected' :'' }>제목</option>
 					<option value="w" ${type eq 'w' ? 'selected' :'' }>작성자</option>
@@ -34,12 +32,12 @@
 				<input
 					type="hidden" name="pageNo" value="${ph.pgvo.pageNo }"> <input
 					type="hidden" name="qty" value="${ph.pgvo.qty }">
-				<button type="submit" class="btn btn-light">Search</button>
+				<button type="submit" class="btn btn-outline-light">Search</button>
 			</div>
 		</form>
 
 		<div style="width: 550px; margin: 0px auto;">
-			<table class="table" style="color: white;">
+			<table class="table" style="border-color: gray; color: white;">
 				<thead>
 					<tr align="center">
 						<th scope="col">번호</th>
@@ -63,8 +61,8 @@
 			</table>
 
 			<div align="center">
-				<a href="/board/register"><button type="button" class="btn btn-light">글 등록</button></a> <a
-					href="/mem/home2"><button type="button" class="btn btn-light">메인가기</button></a> <br>
+				<a href="/board/register"><button type="button" class="btn text-white" style="background-color: DarkRed">글 등록</button></a> <a
+					href="/mem/home2"><button type="button" class="btn text-white" style="background-color: DarkRed">메인가기</button></a> <br>
 			</div>
 			<br>
 			<!-- 페이징처리 -->
@@ -73,17 +71,17 @@
 					<ul class="pagination">
 
 						<c:if test="${ph.prev }">
-							<li class="page-item"><a class="page-link"
+							<li class="page-item"><a class="page-link text-white" style="background-color: DarkRed"
 								href="/board/list?pageNo=${ph.startPage-1 }&qty=${ph.pgvo.qty}">&laquo;</a></li>
 						</c:if>
 
 						<c:forEach begin="${ph.startPage }" end="${ph.endPage }" var="i">
-							<li class="page-item"><a class="page-link"
+							<li class="page-item"><a class="page-link text-white" style="background-color: DarkRed"
 								href="/board/list?pageNo=${i }&qty=${ph.pgvo.qty}">${i }</a></li>
 						</c:forEach>
 
 						<c:if test="${ph.next }">
-							<li class="page-item"><a class="page-link"
+							<li class="page-item"><a class="page-link text-white" style="background-color: DarkRed"
 								href="/board/list?pageNo=${ph.endPage+1 }&qty=${ph.pgvo.qty}">&raquo;</a></li>
 						</c:if>
 					</ul>
@@ -98,7 +96,6 @@
 		<img alt="없음" src="/resources/리스트벽화.jpg"
 			style="width: 1400px; height: 800px; border-radius: 50px;">
 	</div>
-	<jsp:include page="../layout/footer.jsp"></jsp:include>
 
 
 </body>
