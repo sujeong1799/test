@@ -1,6 +1,0 @@
-package com.myweb.www.service;
-
-@Service
-public class CommentServiceImpl implements CommentService {
-
-}

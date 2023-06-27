@@ -1,0 +1,74 @@
+package com.b66k.www.config;
+
+import javax.sql.DataSource;
+
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.mybatis.spring.SqlSessionFactoryBean;
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
+
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
+
+
+@Configuration
+@ComponentScan(basePackages = {"com.myweb.www"})
+@MapperScan(basePackages = {"com.myweb.www.repository"})
+public class RootConfig {
+	
+	@Autowired
+	ApplicationContext applicationcontext;
+	
+	//DB설정
+	//log4jdbc-log4j2 라이브러리 사용시.
+	//Driver "net.sf.log4jdbc.sql.jdbcapi.DriverSpy" 이거 써야함.
+	@Bean
+	public DataSource dataSource() {
+		
+		// 기본세팅
+		HikariConfig hikariConfig = new HikariConfig();
+		hikariConfig.setDriverClassName("net.sf.log4jdbc.sql.jdbcapi.DriverSpy");
+		hikariConfig.setJdbcUrl("jdbc:log4jdbc:mysql://localhost:3306/springdb");
+		hikariConfig.setUsername("springuser");
+		hikariConfig.setPassword("mysql");
+		hikariConfig.setMinimumIdle(0); // db에서 최소 유효 커넥션 수
+		
+		hikariConfig.setConnectionTestQuery("SELECT now()"); // test쿼리 잘 되는지 체크해보는거임
+		hikariConfig.setPoolName("springHikariCP");
+		
+		// 추가되는 부분
+		// cache 사용 여부에 대한 설정
+		// 내가 쓴 쿼리가 잘 쓴거지 확인해준대
+		hikariConfig.addDataSourceProperty("dataSource.cachePrepStmts", "true");
+		
+		// MySQL 드라이브가 연결 당 cache할 statement의 수에 관한 설정 기본 25, 일반적으로 250~500 사이 권장사항 
+		hikariConfig.addDataSourceProperty("dataSource.prepStmtCacheSize", "200");
+		
+		// catch할 sql 구문의 최대 길이
+		hikariConfig.addDataSourceProperty("dataSource.prepStmtCacheSqlLimit", "true");
+		
+		//서버에서 지원받는 설정이 있다면 가능할지에 대한 부분 설정 
+		hikariConfig.addDataSourceProperty("dataSource.useServerPrepStmts", "true");
+		
+		HikariDataSource hikariDataSource = new HikariDataSource(hikariConfig);
+		return hikariDataSource;
+		
+	}
+	
+	public SqlSessionFactory sqlSessionFactory() throws Exception {
+		SqlSessionFactoryBean sqlFactoryBean = new SqlSessionFactoryBean();
+		sqlFactoryBean.setDataSource(dataSource());
+		// 설정 사항에 대한 경로 설정
+		sqlFactoryBean.setConfigLocation(
+				applicationcontext.getResource("classpath:/MybatisConfig.xml"));
+		sqlFactoryBean.setMapperLocations(
+				applicationcontext.getResource("classpath:/mappers/*.xml"));
+		return (SqlSessionFactory)sqlFactoryBean.getObject(); // object 형태로 리턴되기 때문에 형변환해서 리턴해준다.
+		
+	}
+}

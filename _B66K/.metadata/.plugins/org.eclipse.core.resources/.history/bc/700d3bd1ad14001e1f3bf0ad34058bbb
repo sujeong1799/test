@@ -1,0 +1,17 @@
+package com.b66k.www.domain;
+
+
+
+public class BookImg {
+/*
+
+create table bookImg(
+bno int not null,
+save_path varchar(256),
+file_name varchar(256),
+primary key(bno));
+*/
+	private int bno;
+	private String save_path;
+	private String file_name;
+}

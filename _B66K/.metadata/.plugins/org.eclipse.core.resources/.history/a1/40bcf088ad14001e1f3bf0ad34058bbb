@@ -1,0 +1,14 @@
+package com.b66k.www.domain;
+
+public class ReplyVO {
+	
+	/*
+	 create table reply(
+rno int auto_increment not null,
+content text,
+reg_date datetime default now(),
+grade double,
+primary key(rno));
+*/
+
+}
